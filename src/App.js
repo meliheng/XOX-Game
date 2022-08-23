@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import './App.css';
 
 function App() {
 	const [mark, setMark] = useState('X');
-
+	const resultText = useRef(null);
 	useEffect(() => {
 		for (let i = 1; i <= 3; i++) {
 			const tdElements = document.querySelectorAll(`tr[id^="${i}"] td`);
@@ -15,6 +15,8 @@ function App() {
 				tdElements[2].innerHTML !== ''
 			) {
 				console.log('winnn');
+				resultText.current.innerHTML =
+					tdElements[0].innerHTML === 'X' ? 'you win' : 'computer win';
 				return;
 			}
 		}
@@ -28,6 +30,7 @@ function App() {
 	};
 	return (
 		<div className='App'>
+			<h3 ref={resultText}></h3>
 			<table>
 				<tbody>
 					<tr id='1'>
