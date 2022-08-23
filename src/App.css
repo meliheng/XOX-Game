@@ -21,7 +21,8 @@ table tr {
 	border: 1px solid rgb(126, 87, 87);
 }
 table td {
-	width: 10px;
-	height: 10px;
+	width: 30px;
+	height: 30px;
 	border-right: 1px solid rgb(126, 87, 87);
+	text-align: center;
 }
