@@ -9,7 +9,10 @@ function App() {
 			const tdElements = document.querySelectorAll(`tr[id^="${i}"] td`);
 			if (
 				tdElements[0].innerHTML === tdElements[1].innerHTML &&
-				tdElements[1].innerHTML === tdElements[2].innerHTML
+				tdElements[1].innerHTML === tdElements[2].innerHTML &&
+				tdElements[0].innerHTML !== '' &&
+				tdElements[1].innerHTML !== '' &&
+				tdElements[2].innerHTML !== ''
 			) {
 				console.log('winnn');
 				return;
