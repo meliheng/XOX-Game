@@ -5,6 +5,9 @@ function App() {
 	const [mark, setMark] = useState('X');
 	const resultText = useRef(null);
 	useEffect(() => {
+		rowControl();
+	}, [mark]);
+	const rowControl = () => {
 		for (let i = 1; i <= 3; i++) {
 			const tdElements = document.querySelectorAll(`tr[id^="${i}"] td`);
 			if (
@@ -20,11 +23,10 @@ function App() {
 				return;
 			}
 		}
-	}, [mark]);
+	};
 	const writeMark = (e) => {
 		e.target.innerHTML = mark;
 		setMark((prevState) => {
-			console.log(prevState);
 			return prevState === 'X' ? 'O' : 'X';
 		});
 	};
