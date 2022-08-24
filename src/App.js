@@ -6,6 +6,7 @@ function App() {
 	const resultText = useRef(null);
 	useEffect(() => {
 		rowControl();
+		columnControl();
 	}, [mark]);
 	const rowControl = () => {
 		for (let i = 1; i <= 3; i++) {
@@ -17,7 +18,25 @@ function App() {
 				tdElements[1].innerHTML !== '' &&
 				tdElements[2].innerHTML !== ''
 			) {
-				console.log('winnn');
+				resultText.current.innerHTML =
+					tdElements[0].innerHTML === 'X' ? 'you win' : 'computer win';
+				return;
+			}
+		}
+	};
+	const columnControl = () => {
+		const tdCountEachRow = document.querySelectorAll('tr[id^="1"] td');
+		const tdElements = document.querySelectorAll('td');
+		for (let i = 0; i < tdCountEachRow.length; i++) {
+			if (
+				tdElements[i].innerHTML ===
+					tdElements[i + tdCountEachRow.length].innerHTML &&
+				tdElements[i + tdCountEachRow.length].innerHTML ===
+					tdElements[i + tdCountEachRow.length * 2].innerHTML &&
+				tdElements[i].innerHTML !== '' &&
+				tdElements[i + tdCountEachRow.length].innerHTML !== '' &&
+				tdElements[i + tdCountEachRow.length * 2].innerHTML !== ''
+			) {
 				resultText.current.innerHTML =
 					tdElements[0].innerHTML === 'X' ? 'you win' : 'computer win';
 				return;
