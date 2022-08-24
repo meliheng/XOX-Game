@@ -25,8 +25,12 @@ function App() {
 		}
 	};
 	const columnControl = () => {
+		// how many cell in one row, we get this info.
 		const tdCountEachRow = document.querySelectorAll('tr[id^="1"] td');
+		// we get all of the td elements.
 		const tdElements = document.querySelectorAll('td');
+		// end of the for loop is cell count in one row. and compare
+		// cells in the same column.
 		for (let i = 0; i < tdCountEachRow.length; i++) {
 			if (
 				tdElements[i].innerHTML ===
