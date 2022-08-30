@@ -21,6 +21,7 @@ function App() {
 			) {
 				resultText.current.innerHTML =
 					tdElements[0].innerHTML === 'X' ? 'you win' : 'computer win';
+				resetGame();
 				return;
 			}
 		}
@@ -44,6 +45,7 @@ function App() {
 			) {
 				resultText.current.innerHTML =
 					tdElements[0].innerHTML === 'X' ? 'you win' : 'computer win';
+				resetGame();
 				return;
 			}
 		}
@@ -66,8 +68,18 @@ function App() {
 		) {
 			resultText.current.innerHTML =
 				tdElements[0].innerHTML === 'X' ? 'you win' : 'computer win';
-			return;
+			resetGame();
 		}
+	};
+	const resetGame = () => {
+		setTimeout(() => {
+			setMark('X');
+			const tdElements = document.querySelectorAll('td');
+			tdElements.forEach((td) => {
+				td.innerHTML = '';
+				resultText.current.innerHTML = '';
+			});
+		}, 1000);
 	};
 	const writeMark = (e) => {
 		e.target.innerHTML = mark;
