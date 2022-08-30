@@ -7,6 +7,7 @@ function App() {
 	useEffect(() => {
 		rowControl();
 		columnControl();
+		crossControl();
 	}, [mark]);
 	const rowControl = () => {
 		for (let i = 1; i <= 3; i++) {
@@ -45,6 +46,27 @@ function App() {
 					tdElements[0].innerHTML === 'X' ? 'you win' : 'computer win';
 				return;
 			}
+		}
+	};
+	const crossControl = () => {
+		const tdCountEachRow = document.querySelectorAll('tr[id^="1"] td');
+		// we get all of the td elements.
+		const tdElements = document.querySelectorAll('td');
+		// end of the for loop is cell count in one row. and compare
+		// cells in the same column.
+
+		if (
+			tdElements[0].innerHTML ===
+				tdElements[tdCountEachRow.length + 1].innerHTML &&
+			tdElements[tdCountEachRow.length + 1].innerHTML ===
+				tdElements[(tdCountEachRow.length + 1) * 2].innerHTML &&
+			tdElements[0].innerHTML !== '' &&
+			tdElements[tdCountEachRow.length + 1].innerHTML !== '' &&
+			tdElements[(tdCountEachRow.length + 1) * 2].innerHTML !== ''
+		) {
+			resultText.current.innerHTML =
+				tdElements[0].innerHTML === 'X' ? 'you win' : 'computer win';
+			return;
 		}
 	};
 	const writeMark = (e) => {
